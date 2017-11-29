@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Nav from './Nav';
-import './App.css';
+// import Nav from './Nav';
+// import './App.css';
 import firebase, { auth, provider } from './firebase';
 
 class App extends Component {
@@ -90,7 +90,7 @@ class App extends Component {
 
     return (
       <div className="app">
-        <Nav logout={this.logout} login={this.login} user={this.state.user} />
+        {/* <Nav logout={this.logout} login={this.login} user={this.state.user} /> */}
         {this.state.user ? (
           <div>
             <div className="container">
