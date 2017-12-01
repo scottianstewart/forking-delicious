@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import withStyles from 'react-jss';
+import { connect } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
+
+import { signIn, signOut } from '../account/actions';
 
 class Navigation extends Component {
   render() {
-    const { classes, user, logout, login } = this.props;
+    const { classes, signIn, signOut, user } = this.props;
 
     return (
       <div className={classes.root}>
@@ -39,9 +42,9 @@ class Navigation extends Component {
             </NavLink>
           </nav>
           {user ? (
-            <button onClick={logout}>Logout</button>
+            <button onClick={signOut}>Logout</button>
           ) : (
-            <button onClick={login}>Log In</button>
+            <button onClick={signIn}>Log In</button>
           )}
         </div>
       </div>
@@ -49,41 +52,56 @@ class Navigation extends Component {
   }
 }
 
-export default withStyles(theme => ({
-  root: {
-    display: 'flex',
-    width: '100%',
-    height: '64px',
-    background: '#fff',
-  },
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-    width: '100%',
-    maxWidth: '1240px',
-    margin: '0 auto',
-  },
-  logo: {
-    padding: '16px',
-    marginRight: '24px',
-  },
-  nav: {
-    marginRight: 'auto',
-  },
-  link: {
-    fontSize: '16px',
-    lineHeight: '20px',
-    fontWeight: '700',
-    textDecoration: 'none',
-    color: '#9b9b9b',
-    padding: '16px',
-    margin: '0 8px',
+const mapStateToProps = state => ({
+  user: state.account && state.account.user,
+});
 
-    '&:hover': {
+const mapDispatchToProps = dispatch => ({
+  signIn: () => {
+    dispatch(signIn());
+  },
+  signOut: () => {
+    dispatch(signOut());
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(
+  withStyles(theme => ({
+    root: {
+      display: 'flex',
+      width: '100%',
+      height: '64px',
+      background: '#fff',
+    },
+    container: {
+      display: 'flex',
+      alignItems: 'center',
+      width: '100%',
+      maxWidth: '1240px',
+      margin: '0 auto',
+    },
+    logo: {
+      padding: '16px',
+      marginRight: '24px',
+    },
+    nav: {
+      marginRight: 'auto',
+    },
+    link: {
+      fontSize: '16px',
+      lineHeight: '20px',
+      fontWeight: '700',
+      textDecoration: 'none',
+      color: '#9b9b9b',
+      padding: '16px',
+      margin: '0 8px',
+
+      '&:hover': {
+        color: '#242424',
+      },
+    },
+    linkActive: {
       color: '#242424',
     },
-  },
-  linkActive: {
-    color: '#242424',
-  },
-}))(Navigation);
+  }))(Navigation)
+);
