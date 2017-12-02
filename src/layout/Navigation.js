@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 
 import { signIn, signOut } from '../account/actions';
+import Container from './Container';
 
 class Navigation extends Component {
   render() {
@@ -11,7 +12,7 @@ class Navigation extends Component {
 
     return (
       <div className={classes.root}>
-        <div className={classes.container}>
+        <Container className={classes.container}>
           <div className={classes.logo}>
             <Link to="/">Forking Delicious</Link>
           </div>
@@ -46,7 +47,7 @@ class Navigation extends Component {
           ) : (
             <button onClick={signIn}>Log In</button>
           )}
-        </div>
+        </Container>
       </div>
     );
   }
@@ -76,13 +77,12 @@ export default connect(mapStateToProps, mapDispatchToProps)(
     container: {
       display: 'flex',
       alignItems: 'center',
-      width: '100%',
-      maxWidth: '1240px',
-      margin: '0 auto',
+      maxWidth: '1280px',
     },
     logo: {
       padding: '16px',
       marginRight: '24px',
+      marginLeft: '-16px',
     },
     nav: {
       marginRight: 'auto',

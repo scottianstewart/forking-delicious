@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Container from '../layout/Container';
+
 class RecipeSingle extends Component {
   render() {
     const { recipe, match } = this.props;
@@ -7,10 +9,12 @@ class RecipeSingle extends Component {
     console.log(match.params.recipeId);
 
     if (!recipe) {
-      return <div>loading (recipe #{match.params.recipeId})</div>;
+      return (
+        <Container>{`loading (recipe #${match.params.recipeId})`}</Container>
+      );
     }
 
-    return <div>recipe</div>;
+    return <Container>recipe</Container>;
   }
 }
 export default RecipeSingle;
