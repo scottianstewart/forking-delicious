@@ -12,6 +12,7 @@
     "classnames": "2.2.5",
     "firebase": "4.7.0",
     "immutable": "3.8.2",
+    "pluralize": "^7.0.0",
     "prop-types": "15.6.0",
     "react": "16.2.0",
     "react-dom": "16.2.0",

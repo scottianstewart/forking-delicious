@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import withStyles from 'react-jss';
+import pluralize from 'pluralize';
 
 import Container from '../layout/Container';
 import Hero from './Hero';
@@ -15,7 +16,12 @@ class RecipeSingle extends Component {
     const { recipe } = this.props;
     return (
       <div key={id}>
-        {recipe.ingredients[id].qty} {recipe.ingredients[id].measurement}{' '}
+        {recipe.ingredients[id].qty}{' '}
+        {recipe.ingredients[id].measurement &&
+          pluralize(
+            recipe.ingredients[id].measurement,
+            recipe.ingredients[id].qty
+          )}{' '}
         {recipe.ingredients[id].name}
       </div>
     );
