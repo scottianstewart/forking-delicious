@@ -27,6 +27,7 @@ ReactDOM.render(
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/recipes" component={RecipeList} />
+            <Route exact path="/recipes/add" component={RecipeForm} />
             <Route exact path="/recipes/:recipeId" component={RecipeSingle} />
           </Switch>
         </Layout>
