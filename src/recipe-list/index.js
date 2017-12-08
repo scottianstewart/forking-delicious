@@ -1,14 +1,45 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import withStyles from 'react-jss';
+import { Link } from 'react-router-dom';
+
+import Container from '../layout/Container';
+import Recipe from './Recipe';
 
 class RecipeList extends Component {
-  render() {
+  renderRecipe = id => {
     const { recipes } = this.props;
+    return <Recipe key={id} recipe={recipes[id]} />;
+  };
+
+  render() {
+    const { classes, recipes } = this.props;
 
     if (!recipes) {
-      return <div>loading</div>;
+      return <Container>loading</Container>;
     }
 
-    return <div>recipes</div>;
+    const recipeKeys = Object.keys(recipes);
+
+    return (
+      <Container>
+        <div className={classes.grid}>
+          <Link to="/recipes/add">Add</Link>
+          {recipeKeys.map(this.renderRecipe)}
+        </div>
+      </Container>
+    );
   }
 }
-export default RecipeList;
+
+const mapStateToProps = state => ({
+  recipes: state.recipes,
+});
+
+export default connect(mapStateToProps)(
+  withStyles(theme => ({
+    grid: {
+      display: 'flex',
+    },
+  }))(RecipeList)
+);

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import withStyles from 'react-jss';
 import { connect } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
+import compose from 'lodash/flowRight';
 
 import { signIn, signOut } from '../account/actions';
 import Container from './Container';
@@ -24,30 +25,6 @@ class Navigation extends Component {
               activeClassName={classes.linkActive}
             >
               My Recipes
-            </NavLink>
-            <NavLink
-              exact
-              to="/recipes/all"
-              className={classes.link}
-              activeClassName={classes.linkActive}
-            >
-              Recipe Catalog
-            </NavLink>
-            <NavLink
-              exact
-              to="/recipes/8"
-              className={classes.link}
-              activeClassName={classes.linkActive}
-            >
-              Recipe #8
-            </NavLink>
-            <NavLink
-              exact
-              to="/recipes/add"
-              className={classes.link}
-              activeClassName={classes.linkActive}
-            >
-              Add Recipe
             </NavLink>
           </nav>
           {user ? (
@@ -74,42 +51,45 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  withStyles(theme => ({
-    root: {
-      display: 'flex',
-      width: '100%',
-      height: '64px',
-      background: '#fff',
-    },
-    container: {
-      display: 'flex',
-      alignItems: 'center',
-      maxWidth: '1280px',
-    },
-    logo: {
-      padding: '16px',
-      marginRight: '24px',
-      marginLeft: '-16px',
-    },
-    nav: {
-      marginRight: 'auto',
-    },
-    link: {
-      fontSize: '16px',
-      lineHeight: '20px',
-      fontWeight: '700',
-      textDecoration: 'none',
-      color: '#9b9b9b',
-      padding: '16px',
-      margin: '0 8px',
+const styles = theme => ({
+  root: {
+    display: 'flex',
+    width: '100%',
+    height: '64px',
+    background: '#fff',
+  },
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  logo: {
+    padding: '16px',
+    marginRight: '24px',
+    marginLeft: '-16px',
+  },
+  nav: {
+    marginRight: 'auto',
+  },
+  link: {
+    fontSize: '16px',
+    lineHeight: '20px',
+    fontWeight: '700',
+    textDecoration: 'none',
+    color: '#9b9b9b',
+    padding: '16px',
+    margin: '0 8px',
 
-      '&:hover': {
-        color: '#242424',
-      },
-    },
-    linkActive: {
+    '&:hover': {
       color: '#242424',
     },
-  }))(Navigation)
-);
+  },
+  linkActive: {
+    color: '#242424',
+  },
+});
+
+export default compose(
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps),
+  withStyles(styles)
+)(Navigation);
