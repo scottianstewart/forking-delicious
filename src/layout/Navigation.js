@@ -41,6 +41,14 @@ class Navigation extends Component {
             >
               Recipe #8
             </NavLink>
+            <NavLink
+              exact
+              to="/recipes/add"
+              className={classes.link}
+              activeClassName={classes.linkActive}
+            >
+              Add Recipe
+            </NavLink>
           </nav>
           {user ? (
             <button onClick={signOut}>Logout</button>

@@ -14,6 +14,7 @@ import Layout from './layout';
 import Home from './home';
 import RecipeList from './recipe-list';
 import RecipeSingle from './recipe-single';
+import RecipeForm from './recipe-form';
 import './index.css';
 
 const store = createStore(reducers, applyMiddleware(thunk));
@@ -26,6 +27,7 @@ ReactDOM.render(
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/recipes" component={RecipeList} />
+            <Route exact path="/recipes/add" component={RecipeForm} />
             <Route exact path="/recipes/all" component={RecipeList} />
             <Route exact path="/recipes/:recipeId" component={RecipeSingle} />
           </Switch>

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import withStyles from 'react-jss';
 
 const Container = ({ children, classes, className }) => (
-  <div class={classNames(classes.root, className)}>{children}</div>
+  <div className={classNames(classes.root, className)}>{children}</div>
 );
 
 export default withStyles(theme => ({
