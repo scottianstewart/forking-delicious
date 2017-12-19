@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import withStyles from 'react-jss';
+import { withStyles } from 'igravity-ui';
 import { Link } from 'react-router-dom';
 
 import Container from '../layout/Container';

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { ThemeProvider } from 'react-jss';
+import { ThemeProvider } from 'igravity-ui';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import reducers from './reducers';

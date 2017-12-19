@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import withStyles from 'react-jss';
+import { withStyles } from 'igravity-ui';
 import { connect } from 'react-redux';
 import { Link, NavLink, withRouter } from 'react-router-dom';
 import compose from 'lodash/flowRight';

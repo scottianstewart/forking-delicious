@@ -1,5 +1,5 @@
 import React from 'react';
-import withStyles from 'react-jss';
+import { withStyles } from 'igravity-ui';
 import Navigation from './Navigation';
 
 const Layout = ({ children, classes }) => (

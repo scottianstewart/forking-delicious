@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import withStyles from 'react-jss';
+import { withStyles } from 'igravity-ui';
 
 const Container = ({ children, classes, className }) => (
   <div className={classNames(classes.root, className)}>{children}</div>

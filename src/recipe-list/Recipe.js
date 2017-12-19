@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from 'react-jss';
+import { withStyles } from 'igravity-ui';
 import { Link } from 'react-router-dom';
 
 const Recipe = ({ classes, recipe }) => {

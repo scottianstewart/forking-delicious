@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import withStyles from 'react-jss';
+import { withStyles } from 'igravity-ui';
 import pluralize from 'pluralize';
 
 import Container from '../layout/Container';
