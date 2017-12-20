@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 const Recipe = ({ classes, recipe }) => {
   const { images, ingredients } = recipe;
-  const ingredientsCount = Object.keys(ingredients).length;
 
   return (
     <Link
@@ -15,7 +14,7 @@ const Recipe = ({ classes, recipe }) => {
     >
       <div className={classes.content}>
         <h2 className={classes.name}>{recipe.name}</h2>
-        <div className={classes.count}>{ingredientsCount} Ingredients</div>
+        <div className={classes.count}>{ingredients.length} Ingredients</div>
       </div>
     </Link>
   );

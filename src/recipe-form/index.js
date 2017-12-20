@@ -13,11 +13,11 @@ class RecipeForm extends Component {
           initialValues={{
             name: '',
             ingredients: [{ name: '', qty: '', measurement: '' }],
+            directions: [''],
           }}
           validationSchema={() =>
             Yup.object().shape({
               name: Yup.string().required('Name is required'),
-              // images: todo,
               ingredients: Yup.array().of(
                 Yup.object().shape({
                   name: Yup.string().required(),
@@ -47,16 +47,9 @@ class RecipeForm extends Component {
               <Field id="name" name="name" label="Name" component={Input} />
               <FieldArray
                 name="ingredients"
-                render={props => (
+                render={({ form, push }) => (
                   <div>
-                    <button
-                      onClick={() =>
-                        props.push({ name: '', qty: '', measurement: '' })
-                      }
-                    >
-                      Test
-                    </button>
-                    {props.form.values.ingredients.map((ingredient, i) => (
+                    {form.values.ingredients.map((ingredient, i) => (
                       <Fragment key={i}>
                         <Field
                           id={`ingredients.${i}.name`}
@@ -78,6 +71,33 @@ class RecipeForm extends Component {
                         />
                       </Fragment>
                     ))}
+                    <button
+                      onClick={() =>
+                        push({ name: '', qty: '', measurement: '' })
+                      }
+                    >
+                      Add another ingredient
+                    </button>
+                  </div>
+                )}
+              />
+              <FieldArray
+                name="directions"
+                render={({ form, push }) => (
+                  <div>
+                    {form.values.directions.map((direction, i) => (
+                      <Fragment key={i}>
+                        <Field
+                          id={`directions.${i}`}
+                          name={`directions.${i}`}
+                          label={`Step ${i + 1}`}
+                          component={Input}
+                        />
+                      </Fragment>
+                    ))}
+                    <button onClick={() => push('')}>
+                      Add another direction
+                    </button>
                   </div>
                 )}
               />
